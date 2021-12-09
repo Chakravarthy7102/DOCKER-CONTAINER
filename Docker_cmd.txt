@@ -1,0 +1,19 @@
+--General Docker commands--
+
+-docker ps :this cmd is used to check for present up and running docker containers
+-docker images :lists out the available images on the local machine
+-docker exec -it {container name} /bin/bash or shell :this will allow you to explore the docker container directory
+-docker rm image-id -f:this will force remove your container even it is up nad running
+******************************************************************************************
+--for Building the docker image--
+
+-docker build ${directory where the project lies or the dockerfile present}
+varients:
+-docker build -t{prefered name to the new docker image}
+*******************************************************************************************
+--Running the image(Container form)--
+
+however this command only sets the scope of the container to docker enviorment
+-docker run {image-name}
+-docker run -d -p${host port number}:${docker-env-port-num} --name{gives a name to this contaner} {image name}
+
