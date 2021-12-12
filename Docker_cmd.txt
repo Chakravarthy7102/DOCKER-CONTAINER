@@ -5,6 +5,7 @@
 -docker images :lists out the available images on the local machine
 -docker exec -it {container name} /bin/bash or shell :this will allow you to explore the docker container directory
 -docker rm image-id -f:this will force remove your container even it is up nad running
+-docker volume prune (will remove all the unused volumes by a container)
 ******************************************************************************************
 --for Building the docker image--
 
@@ -21,3 +22,8 @@ however this command only sets the scope of the container to docker enviorment
 ***To make the file changes persistent in the docker container/image whenever you do a change to your code base
     use the Docker volumes concept to make development fast***
 - docker run -d -v ${pwd}:/app -p3000:3000  node-app //-v is the key
+**To not change the Node_modules or any directory when rebuilding the image after the changes just add another -v flag
+  specifiing the folder you dont wanna change
+- docker run -d -v ${pwd}:/app -v /app/node_modules -p3000:3000  node-app //-v is the key
+- docker run -d -v ${pwd}:/app:ro  -p3000:3000   node-app(read only mode)
+ 
