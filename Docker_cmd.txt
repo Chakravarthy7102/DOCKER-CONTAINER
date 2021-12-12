@@ -18,6 +18,7 @@ varients:
 however this command only sets the scope of the container to docker enviorment
 -docker run {image-name}
 -docker run -d -p${host port number}:${docker-env-port-num} --name{gives a name to this contaner} {image name}
+-docker run -d -v ${pwd}:/app:ro --env-file ./.env -p3000:4000 node-app (Working with the Env variables)
 
 ***To make the file changes persistent in the docker container/image whenever you do a change to your code base
     use the Docker volumes concept to make development fast***
