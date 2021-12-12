@@ -8,7 +8,7 @@ COPY . /app/
 # which is 3000
 EXPOSE 3000
 # to the run the application in Docker enviorment use the CMD(excectable command)
-CMD ["node","app.js"]
+CMD ["npm","run","dev"]
 
 
 

@@ -1,4 +1,5 @@
 --General Docker commands--
+**CMD ["npm","run","dev"](when working with the nodemon in dev env)
 
 -docker ps :this cmd is used to check for present up and running docker containers
 -docker images :lists out the available images on the local machine
@@ -17,3 +18,6 @@ however this command only sets the scope of the container to docker enviorment
 -docker run {image-name}
 -docker run -d -p${host port number}:${docker-env-port-num} --name{gives a name to this contaner} {image name}
 
+***To make the file changes persistent in the docker container/image whenever you do a change to your code base
+    use the Docker volumes concept to make development fast***
+- docker run -d -v ${pwd}:/app -p3000:3000  node-app //-v is the key
