@@ -1,14 +1,9 @@
+# this is common docker compose for both the dev and production docker image/container
 version: '3'
 services:
-  # name of the image here
   node-app:
     build: .
     ports:
       - 3000:3000
-    volumes:
-      - ./:/app:ro
-      - /app/node_modules
     environment:
       - PORT=3000
-    # env_file:
-    #   - ./.env

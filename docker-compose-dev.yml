@@ -1,0 +1,13 @@
+version: '3'
+services:
+  node-app:
+    build: 
+      context: .
+      args: 
+        NODE_ENV: development
+    volumes:
+      - ./:/app:ro
+    environment:
+      - NODE_ENV= development
+      # this how you will override the default CMD in Dockerfile in docker-compose
+    command: npm run dev

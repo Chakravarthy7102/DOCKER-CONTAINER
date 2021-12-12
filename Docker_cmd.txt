@@ -27,4 +27,8 @@ however this command only sets the scope of the container to docker enviorment
   specifiing the folder you dont wanna change
 - docker run -d -v ${pwd}:/app -v /app/node_modules -p3000:3000  node-app //-v is the key
 - docker run -d -v ${pwd}:/app:ro  -p3000:3000   node-app(read only mode)
+
+****************************************************************************************************************
+****DOCKER-COMPOSE*******
+-docker-compose  -f docker-compose.yml -f docker-compose-dev.yml up -d (working with diffrent yml files)
  
