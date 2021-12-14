@@ -7,3 +7,7 @@ services:
       - 3000:3000
     environment:
       - PORT=3000
+  mongo-db:
+    image: mongo
+    env_file:
+      - db.env
