@@ -7,6 +7,12 @@ services:
       - 3000:3000
     environment:
       - PORT=3000
+      # so the node app is depended on the mongo container to establish the database connection 
+      # we launch the mongo container first and then the node container
+    depends_on:
+      - mongo-db  
+
+
   mongo-db:
     image: mongo
     env_file:

@@ -33,5 +33,6 @@ however this command only sets the scope of the container to docker enviorment
 
 ****************************************************************************************************************
 ****DOCKER-COMPOSE*******
--docker-compose  -f docker-compose.yml -f docker-compose-dev.yml up -d (working with diffrent yml files)
+-docker-compose  -f docker-compose.yml -f docker-compose-dev.yml up -d (working with diffrent yml files) --build
+-docker network inspect  id Or the name os the running container(this will give tons of info about all the network configs inside the containers internal network)
  

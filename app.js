@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const blogRouter = require("./Routes/routes");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
@@ -10,10 +11,13 @@ app.get("/", (req, res) => {
   res.send("<h1>Docker Compose</h1>");
 });
 
+app.use(express.json());
+
+app.use("/home", blogRouter);
+
 const connectToDB = async () => {
-  await mongoose.connect(URI, () => {
-    console.log("This is Connected to the Database");
-  });
+  await mongoose.connect(URI, { useNewUrlParser: true });
+  console.log("Connected to the Database");
 };
 
 const start = () => {
