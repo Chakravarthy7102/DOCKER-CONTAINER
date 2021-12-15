@@ -11,3 +11,12 @@ services:
     image: mongo
     env_file:
       - db.env
+    volumes:
+      - mongo-db:/data/db  
+
+
+
+
+#You always have to mention all your named Volumes in the bottom Volumes sections so that the other services can access the named volume
+volumes:
+  mongo-db:
