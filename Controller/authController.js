@@ -12,6 +12,7 @@ exports.createUser = async (req, res) => {
       user,
       password: hashPassword,
     });
+    req.session.user = newuser;
     res.status(200).json({
       newuser,
       msg: "the new User is Created !",
@@ -39,6 +40,7 @@ exports.login = async (req, res) => {
     const isCorrect = await bcryptjs.compare(password, userInDatabase.password);
 
     if (isCorrect) {
+      req.session.user = userInDatabase;
       res.status(200).json({
         msg: "User has Logged In!",
       });

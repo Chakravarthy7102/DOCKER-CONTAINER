@@ -9,7 +9,7 @@ require("dotenv").config();
 
 //get the redis store
 
-let RedisStore = require("redis-connect")(session);
+let RedisStore = require("connect-redis")(session);
 //setting up the redis clinet
 let redisClient = redis.createClient({
   host: "redis",
@@ -31,9 +31,14 @@ app.use("/home", userRouter);
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
-    saveUninitialized: false,
     secret: "keyboard cat",
-    resave: false,
+    cookie: {
+      saveUninitialized: false,
+      secure: false,
+      resave: false,
+      httpOnly: true,
+      maxAge: 300000,
+    },
   })
 );
 
