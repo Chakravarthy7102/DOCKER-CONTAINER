@@ -6,6 +6,7 @@
 -docker exec -it {container name} /bin/bash or shell :this will allow you to explore the docker container directory
 -docker rm image-id -f:this will force remove your container even it is up nad running
 -docker volume prune (will remove all the unused volumes by a container)
+-docker logs (id) -f (to look the live terminal)
 
 ****CMD for entering the Mongo Shell **
 -docker exec -it "id" mongo -u -p
@@ -35,4 +36,7 @@ however this command only sets the scope of the container to docker enviorment
 ****DOCKER-COMPOSE*******
 -docker-compose  -f docker-compose.yml -f docker-compose-dev.yml up -d (working with diffrent yml files) --build
 -docker network inspect  id Or the name os the running container(this will give tons of info about all the network configs inside the containers internal network)
+
+****Docker Application Scale Unsing Nginx******
+-docker-compose  -f docker-compose.yml -f docker-compose-dev.yml up -d --scale node-app=2(reqire app instances) 
  

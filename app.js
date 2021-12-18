@@ -16,18 +16,7 @@ let redisClient = redis.createClient({
   port: 6379,
 });
 
-const PORT = process.env.PORT || 3000;
-const URI = process.env.MONGO_URI;
-
-app.get("/", (req, res) => {
-  res.send("<h1>Docker Compose</h1>");
-});
-
-app.use(express.json());
-
-app.use("/home", blogRouter);
-app.use("/home", userRouter);
-
+app.enable("trust proxy");
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -41,6 +30,19 @@ app.use(
     },
   })
 );
+
+const PORT = process.env.PORT || 3000;
+const URI = process.env.MONGO_URI;
+
+app.get("/home", (req, res) => {
+  res.send("<h1>Docker Compose</h1>");
+  console.log("yup this shit is running nigga");
+});
+
+app.use(express.json());
+
+app.use("/home", blogRouter);
+app.use("/home", userRouter);
 
 const connectToDB = async () => {
   await mongoose.connect(URI, { useNewUrlParser: true });
