@@ -1,10 +1,17 @@
 # this is common docker compose for both the dev and production docker image/container
 version: '3'
 services:
+  
+  nginx:
+    image: nginx
+    ports:
+      - "3000:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/templates:ro
+
+
   node-app:
     build: .
-    ports:
-      - 3000:3000
     environment:
       - PORT=3000
       # so the node app is depended on the mongo container to establish the database connection 
